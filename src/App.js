@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { SideBar } from './components/SideBar';
-import { Content } from './components/Content';
+import { Show } from './components/Show';
 
 class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className ="wrapper">
         <SideBar/>
-        {/* <Content/> */}
+        <div className="wrapper">
+          <Route path='/show/:id' component={Show} />
+        </div>
         <footer className ="footer">
             <div className ="container-fluid">
                 <p className ="copyright pull-right">
@@ -19,6 +23,7 @@ class App extends Component {
             </div>
         </footer>
       </div>
+      </Router>
     );
   }
 }

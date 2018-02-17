@@ -5,7 +5,7 @@ export class Content extends Component {
     render() {
         return (
             <div class="main-panel">
-            <nav class="navbar navbar-default navbar-fixed">
+            {/* <nav class="navbar navbar-default navbar-fixed">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -153,7 +153,7 @@ export class Content extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
         );
     }
