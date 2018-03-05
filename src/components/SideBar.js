@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
+import { CreateProject } from './CreateProject';
 
 export class SideBar extends Component {
  
@@ -19,17 +21,30 @@ export class SideBar extends Component {
             console.log(this.state.projects);
           });
       }
-    
+
+      componentWillMount(nextProps) {
+        axios.get('http://localhost:5000/api/')
+          .then(res => {
+            this.setState({ projects: res.data });
+            console.log(this.state.projects);
+          });
+      }
+   
     render() {
         return (
-          <div>
             <div className ="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
               <div className ="sidebar-wrapper">
                     <div className ="logo">
-                        <a href="" className ="simple-text">
+                        <Link to={'/'} className ="simple-text">
                             Projects
-                        </a>
+                        </Link>
                     </div>
+                    <div className="header">
+                      <Link to={`/createproject`}><i className="pe-7s-plus task-n"></i><p className="category">New Task</p></Link>
+                    </div>
+                      <div className="header">
+                        <Route path='/createproject' component={CreateProject} />
+                      </div>
                     <ul className ="nav">
                     {
                       this.state.projects.map(project =>
@@ -43,7 +58,6 @@ export class SideBar extends Component {
                     }
                     </ul>
               </div>
-            </div>
             </div>
         );
     }

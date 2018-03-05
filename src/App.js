@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { SideBar } from './components/SideBar';
 import { Show } from './components/Show';
+import { Home } from './components/Home';
 
 class App extends Component {
 
@@ -12,9 +13,10 @@ class App extends Component {
       <Router>
       <div className ="wrapper">
         <SideBar/>
-        <div className="wrapper">
+        <main role="main">
+          <Route exact path='/' component={Home} />
           <Route path='/show/:id' component={Show} />
-        </div>
+        </main>
         <footer className ="footer">
             <div className ="container-fluid">
                 <p className ="copyright pull-right">
